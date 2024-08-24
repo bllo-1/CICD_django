@@ -24,17 +24,16 @@ spec:
 
 ---
 
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: django-service
 spec:
-  type: NodePort
   selector:
-    app: django-app
+    app: django
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
-    nodePort: 30008
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer
 
