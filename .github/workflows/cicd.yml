@@ -37,9 +37,11 @@ jobs:
       uses: azure/setup-kubectl@v3
       with:
         version: 'latest'
+  
+    - name: Configure KUBECONFIG
+      run: echo "${{ secrets.KUBECONFIG }}" > /tmp/kubeconfig
 
     - name: Deploy to Kubernetes
       env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: |
-        kubectl apply -f k8s-deployment.yaml
+        KUBECONFIG: /tmp/kubeconfig
+      run: kubectl apply -f k8s-deployment.yaml
