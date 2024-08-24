@@ -30,11 +30,14 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: build  # Ensures that the deploy job runs after the build job
+    needs: build
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List files for debugging
+        run: ls -al
+
       - name: Deploy to Kubernetes
-        run: kubectl apply -f k8s-deployment.yaml
+        run: kubectl apply -f k8s-deployment.yaml  # Adjust path if necessary
