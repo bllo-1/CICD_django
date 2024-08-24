@@ -39,11 +39,8 @@ jobs:
       - name: Print working directory
         run: pwd
 
-      - name: List files in the k8s directory (if applicable)
-        run: ls -al 
-
-      - name: List files for debugging
-        run: ls -al k8s/
+      - name: List files in the root directory
+        run: ls -al
 
       - name: Deploy to Kubernetes
-        run: kubectl apply -f $(pwd)/k8s-deployment.yaml # Adjust path if necessary
+        run: kubectl apply -f k8s-deployment.yml
