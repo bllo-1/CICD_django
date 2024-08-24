@@ -30,6 +30,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
+    needs: build  # Ensures that the deploy job runs after the build job
 
     steps:
       - name: Checkout code
