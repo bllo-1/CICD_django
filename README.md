@@ -1,1 +1,1 @@
-CICD for Django 
+CICD for Django .
