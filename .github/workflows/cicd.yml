@@ -44,15 +44,23 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f k8s-deployment.yml
-Pushtoargorepo:
-   runs-on: ubuntu-latest
+
+  pushtoargorepo:
+    runs-on: ubuntu-latest
+    needs: build
+
     steps:
       - name: Checkout helm repo
-        uses: actions/checkout@v2
-      - name: update values.yaml
-        run: |
-          echo "image: ecr.aws.amazonaws.com/your-repo-name:latest" >> helm/values.yaml  
-      - name: push to argo repo
-        run: |
-          git commands to commit and push the changes to the helmrepo
+        uses: actions/checkout@v3
 
+      - name: Update values.yaml
+        run: |
+          echo "image: ecr.aws.amazonaws.com/your-repo-name:latest" >> helm/values.yaml
+
+      - name: Push to Argo repo
+        run: |
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your Name"
+          git add helm/values.yaml
+          git commit -m "Update Docker image version in Helm chart"
+          git push
