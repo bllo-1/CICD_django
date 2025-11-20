@@ -1,4 +1,5 @@
-CICD for Django .
+# CI/CD for Django
+```mermaid
 graph TB
     subgraph "Development Flow"
         A[Developer Push/PR] --> B{Event Type}
@@ -72,3 +73,4 @@ graph TB
     style F10 fill:#f9f,stroke:#333,stroke-width:2px
     style D10 fill:#9f9,stroke:#333,stroke-width:2px
     style D11 fill:#f99,stroke:#333,stroke-width:2px
+```
